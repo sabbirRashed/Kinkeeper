@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router';
+
 
 const MainLayout = () => {
     return (
