@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router';
+import Footer from '../components/Footer';
 
 
 const MainLayout = () => {
@@ -8,6 +9,7 @@ const MainLayout = () => {
         <div>
             <Navbar></Navbar>
             <Outlet></Outlet>
+            <Footer></Footer>
         </div>
     );
 };
