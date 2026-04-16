@@ -4,5 +4,7 @@
 @plugin "daisyui";
 
 body{
-  font-family:  "Geist", sans-serif;;
+  font-family:  "Geist", sans-serif;
+  background-color: #F8FAFC;
+  min-height: 100vh;
 }

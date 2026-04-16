@@ -32,8 +32,8 @@ const Navbar = () => {
         </li>
     </>
     return (
-        <div className='shadow-sm'>
-            <div className="w-11/12 max-w-325 mx-auto navbar bg-base-100 ">
+        <div className='shadow-sm bg-white'>
+            <div className="w-11/12 max-w-325 mx-auto navbar bg-base-white ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
