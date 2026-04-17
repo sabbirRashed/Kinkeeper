@@ -1,9 +1,118 @@
 import React from 'react';
+import { useLoaderData, useParams } from 'react-router';
+import FriendCard from '../ui/FriendCard';
+import { RiDeleteBinLine, RiNotificationSnoozeLine } from 'react-icons/ri';
+import { BiSolidArchive } from 'react-icons/bi';
 
 const FriendDetails = () => {
+    const { friendId } = useParams();
+    const friendData = useLoaderData();
+
+    const expectedFriend = friendData.find((friend) => friend.id === Number(friendId));
+
+    const {
+        name,
+        picture,
+        email,
+        days_since_contact,
+        status,
+        statusId,
+        tags,
+        bio,
+        next_due_date
+
+    } = expectedFriend;
+
     return (
-        <div>
-            Friend details
+        <div className=' w-11/12 max-w-325 mx-auto mt-20  grid grid-cols-1 md:grid-cols-3 gap-6'>
+            <div className=''>
+                <div
+                    className='text-cente space-y-3 p-6 shadow-lg rounded-lg bg-white text-center overflow-hidden'>
+                    <div>
+                        <img
+                            src={picture}
+                            alt={name}
+                            className='mx-auto' />
+                    </div>
+                    <div className='space-y-2'>
+                        <h2 className='text-xl font-bold text-[#1F2937]'>{name}</h2>
+                        <p
+                            className={`text-xs inline-block rounded-full px-3 py-1 
+                        ${statusId === "overdue" ?
+                                    "bg-[#EF4444] text-white"
+                                    : statusId === "almost_due" ?
+                                        "bg-[#EFAD44] text-white"
+                                        : statusId === "on-track" ?
+                                            "bg-[#244D3F] text-white" : ""}`}
+                        >
+                            {status}
+                        </p>
+                        <p>
+                            {
+                                tags.map((tag, index) => {
+                                    return <span
+                                        key={index}
+                                        className='text-xs font-medium text-[#64748B] mr-2 bg-green-200 px-2 py-1 rounded-full'>
+                                        {tag.toUpperCase()}
+                                    </span>
+                                })
+                            }
+                        </p>
+                        <p className='italic text-[#64748B] mb-0'>"{bio}"</p>
+                        <p className='text-[#64748B]'>Email: {email}</p>
+                    </div>
+                </div>
+                <div className='flex flex-col gap-2 mt-4'>
+                    <button className='btn bg-white rounded-xs shadow-lg py-6'><RiNotificationSnoozeLine />Snooze 2 weeks</button>
+                    <button className='btn bg-white rounded-xs shadow-lg py-6'><BiSolidArchive />Archive</button>
+                    <button className='btn bg-white rounded-xs shadow-lg py-6'><RiDeleteBinLine />Delete</button>
+                </div>
+            </div>
+
+            <div className=' min-h-50 col-span-2 space-y-6'>
+                <div className='grid grid-cols-3 gap-6'>
+                    <div className='bg-white text-center rounded-lg px-4 py-8 space-y-2 shadow-lg'>
+                        <h3 className='text-2xl md:text-3xl font-bold'>50</h3>
+                        <p className='text-[#64748B]'>Days Since Contact</p>
+                    </div>
+                    <div className='bg-white text-center rounded-lg px-4 py-8 space-y-2 shadow-lg'>
+                        <h3 className='text-2xl md:text-3xl font-bold'>50</h3>
+                        <p className='text-[#64748B]'>Days Since Contact</p>
+                    </div>
+                    <div className='bg-white text-center rounded-lg px-4 py-8 space-y-2 shadow-lg'>
+                        <h3 className='text-2xl md:text-3xl font-bold'>50</h3>
+                        <p className='text-[#64748B]'>Days Since Contact</p>
+                    </div>
+                </div>
+
+                <div className='space-y-4 p-6 rounded-lg shadow-lg bg-white'>
+                    <div className='flex justify-between'>
+                        <h3>Relationship Goal</h3>
+                        <button className='btn'>Edit</button>
+                    </div>
+                    <p>Connect every 30 days</p>
+                </div>
+
+                <div className='space-y-4 p-6 rounded-lg shadow-lg bg-white'>
+
+                    <h3>Quick Check-In</h3>
+
+                    <div className='grid grid-cols-3 gap-6'>
+                        <div className='bg-[#F8FAFC] text-center rounded-lg px-4 py-8 space-y-2 border border-gray-200'>
+                            <span>call icon</span>
+                            <p className='text-[#64748B]'>Call</p>
+                        </div>
+                        <div className='bg-[#F8FAFC] text-center rounded-lg px-4 py-8 space-y-2 border border-gray-200'>
+                            <span>call icon</span>
+                            <p className='text-[#64748B]'>Call</p>
+                        </div>
+                        <div className='bg-[#F8FAFC] text-center rounded-lg px-4 py-8 space-y-2 border border-gray-200'>
+                            <span>call icon</span>
+                            <p className='text-[#64748B]'>Call</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

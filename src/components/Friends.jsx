@@ -13,7 +13,13 @@ const Friends = () => {
             <h2 className='text-xl md:text-2xl font-bold text-[#1F2937] mb-4 '>Your Friends</h2>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
                 {
-                    friendsData.map((friend) => <FriendCard key={friend.id} friend={friend}></FriendCard>)
+                    friendsData.map((friend) => {
+                        return <FriendCard
+                            key={friend.id}
+                            friend={friend}
+                            showDays={true}>
+                        </FriendCard>
+                    })
                 }
             </div>
         </div>
