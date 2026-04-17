@@ -2,6 +2,8 @@ import React, { Suspense } from 'react';
 import Banner from '../components/Banner';
 import SummaryCard from '../ui/SummaryCard';
 import Friends from '../components/Friends';
+import { CirclesWithBar } from 'react-loader-spinner';
+import LoadingSpinner from '../ui/LoadingSpinner';
 
 
 const Home = () => {
@@ -10,7 +12,7 @@ const Home = () => {
         <div>
             <Banner />
             <SummaryCard />
-            <Suspense fallback={<h2>loading...</h2>}>
+            <Suspense fallback={<LoadingSpinner/>}>
                 <Friends></Friends>
             </Suspense>
         </div>
