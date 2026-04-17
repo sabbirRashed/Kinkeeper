@@ -1,16 +1,52 @@
-# React + Vite
+# 🧠 KeenKeeper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Description
+KeenKeeper is a modern and responsive web application built with React that helps users manage and visualize their data in an organized and interactive way. It focuses on clean UI, smooth navigation, and data visualization for a better user experience.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Live Link
+🔗 [Visit KeenKeeper](https://keenkeeper-social-app.netlify.app/)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Technologies Used
+KeenKeeper is built using modern frontend technologies:
 
-## Expanding the ESLint configuration
+- React.js
+- React Router DOM
+- Tailwind CSS
+- DaisyUI
+- Recharts
+- React Icons
+- JavaScript (ES6+)
+- Other npm libraries
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ Key Features
+
+- User-friendly and responsive UI design
+- Multi-page navigation using React Router
+- Interactive charts and data visualization using Recharts
+- Clean and modern UI with Tailwind CSS + DaisyUI
+- Fully responsive for mobile, tablet, and desktop
+- Fast and smooth single-page application experience
+- Modular and reusable React components
+- Organized data management system
+
+---
+
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/keenkepper.git
+
+# Navigate to project folder
+cd keenkeeper
+
+# Install dependencies
+npm install
+
+# Run the project
+npm run dev
