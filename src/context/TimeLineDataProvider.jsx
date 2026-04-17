@@ -17,6 +17,8 @@ const TimeLineDataProvider = ({ children }) => {
             month: 'long',
             day: 'numeric',
             year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
         })
 
         const timeLineData = {
