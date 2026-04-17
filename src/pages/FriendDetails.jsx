@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import FriendCard from '../ui/FriendCard';
 import { RiDeleteBinLine, RiNotificationSnoozeLine } from 'react-icons/ri';
@@ -7,11 +7,15 @@ import { LuPhoneCall } from 'react-icons/lu';
 import { MdOutlineMessage } from 'react-icons/md';
 import { IoVideocamOutline } from 'react-icons/io5';
 import { TimeLineContext } from '../context/TimeLineDataProvider';
+import { FaRegEdit } from 'react-icons/fa';
+import GoalEditForm from '../ui/GoalEditForm';
 
 const FriendDetails = () => {
     const { friendId } = useParams();
     const friendData = useLoaderData();
-    const {handleCheckInBtn} = useContext(TimeLineContext);
+    const { handleCheckInBtn } = useContext(TimeLineContext);
+    const [isClickedEdit, setIsClickedEdit] = useState(false);
+    
 
     const expectedFriend = friendData.find((friend) => friend.id === Number(friendId));
 
@@ -28,6 +32,9 @@ const FriendDetails = () => {
         goal
 
     } = expectedFriend;
+    const [goalInDays, setGoalInDays] = useState(goal)
+
+    
 
 
     return (
@@ -83,7 +90,7 @@ const FriendDetails = () => {
                         <p className='text-[#64748B]'>Days Since Contact</p>
                     </div>
                     <div className='bg-white text-center rounded-lg px-4 py-8 space-y-2 shadow-lg'>
-                        <h3 className='text-2xl font-bold'>{goal}</h3>
+                        <h3 className='text-2xl font-bold'>{goalInDays}</h3>
                         <p className='text-[#64748B]'>Goal (Days)</p>
                     </div>
                     <div className='bg-white text-center rounded-lg px-4 py-8 space-y-2 shadow-lg'>
@@ -95,12 +102,24 @@ const FriendDetails = () => {
                 <div className='space-y-4 p-6 rounded-lg shadow-lg bg-white'>
                     <div className='flex justify-between items-center'>
                         <h3 className='text-xl font-bold text-[#244D3F]'>Relationship Goal</h3>
-                        <button className='btn'>Edit</button>
+                        <button
+                            onClick={() => { setIsClickedEdit(!isClickedEdit) }}
+                            className='btn'>
+                            <FaRegEdit />Edit
+                        </button>
                     </div>
                     <p className='text-[#64748B]'>
                         Connect every
                         <span className='font-bold text text-[#1F2937]'> {goal} days</span>
                     </p>
+                    {
+                        isClickedEdit && <div className='border border-gray-200 bg-[#F8FAFC] p-4 rounded-lg flex items-center gap-6'>
+                            <p>Goal in Days</p>
+                           <GoalEditForm 
+                           expectedFriend={expectedFriend}
+                           setGoalInDays={setGoalInDays}></GoalEditForm>
+                        </div>
+                    }
                 </div>
 
                 <div className='space-y-4 p-6 rounded-lg shadow-lg bg-white'>
@@ -108,22 +127,22 @@ const FriendDetails = () => {
                     <h3 className='text-xl font-bold text-[#244D3F]'>Quick Check-In</h3>
 
                     <div className='grid grid-cols-3 gap-6'>
-                        <button 
-                        onClick={()=>{handleCheckInBtn(expectedFriend, "Call")}}
-                        className='btn h-auto rounded-lg flex-col py-4'>
-                            <span><LuPhoneCall  className='text-2xl'/></span>
+                        <button
+                            onClick={() => { handleCheckInBtn(expectedFriend, "Call") }}
+                            className='btn h-auto rounded-lg flex-col py-4'>
+                            <span><LuPhoneCall className='text-2xl' /></span>
                             <p className='text-[#64748B]'>Call</p>
                         </button>
-                        <button 
-                        onClick={()=>{handleCheckInBtn(expectedFriend, "Text")}}
-                        className='btn h-auto rounded-lg flex-col py-4'>
-                            <span><MdOutlineMessage  className='text-2xl'/></span>
+                        <button
+                            onClick={() => { handleCheckInBtn(expectedFriend, "Text") }}
+                            className='btn h-auto rounded-lg flex-col py-4'>
+                            <span><MdOutlineMessage className='text-2xl' /></span>
                             <p className='text-[#64748B]'>Text</p>
                         </button>
-                        <button 
-                        onClick={()=>{handleCheckInBtn(expectedFriend, "Vedio")}}
-                        className='btn h-auto rounded-lg flex-col py-4 '>
-                            <span><IoVideocamOutline  className='text-3xl'/></span>
+                        <button
+                            onClick={() => { handleCheckInBtn(expectedFriend, "Vedio") }}
+                            className='btn h-auto rounded-lg flex-col py-4 '>
+                            <span><IoVideocamOutline className='text-3xl' /></span>
                             <p className='text-[#64748B]'>Vedio</p>
                         </button>
                     </div>
