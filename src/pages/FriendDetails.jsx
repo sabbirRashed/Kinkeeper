@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import FriendCard from '../ui/FriendCard';
 import { RiDeleteBinLine, RiNotificationSnoozeLine } from 'react-icons/ri';
 import { BiSolidArchive } from 'react-icons/bi';
+import { LuPhoneCall } from 'react-icons/lu';
+import { MdOutlineMessage } from 'react-icons/md';
+import { IoVideocamOutline } from 'react-icons/io5';
+import { TimeLineContext } from '../context/TimeLineDataProvider';
 
 const FriendDetails = () => {
     const { friendId } = useParams();
     const friendData = useLoaderData();
+    const {handleCheckInBtn} = useContext(TimeLineContext);
 
     const expectedFriend = friendData.find((friend) => friend.id === Number(friendId));
 
@@ -19,9 +24,11 @@ const FriendDetails = () => {
         statusId,
         tags,
         bio,
-        next_due_date
+        next_due_date,
+        goal
 
     } = expectedFriend;
+
 
     return (
         <div className=' w-11/12 max-w-325 mx-auto mt-20  grid grid-cols-1 md:grid-cols-3 gap-6'>
@@ -72,44 +79,53 @@ const FriendDetails = () => {
             <div className=' min-h-50 col-span-2 space-y-6'>
                 <div className='grid grid-cols-3 gap-6'>
                     <div className='bg-white text-center rounded-lg px-4 py-8 space-y-2 shadow-lg'>
-                        <h3 className='text-2xl md:text-3xl font-bold'>50</h3>
+                        <h3 className='text-2xl font-bold'>{days_since_contact}</h3>
                         <p className='text-[#64748B]'>Days Since Contact</p>
                     </div>
                     <div className='bg-white text-center rounded-lg px-4 py-8 space-y-2 shadow-lg'>
-                        <h3 className='text-2xl md:text-3xl font-bold'>50</h3>
-                        <p className='text-[#64748B]'>Days Since Contact</p>
+                        <h3 className='text-2xl font-bold'>{goal}</h3>
+                        <p className='text-[#64748B]'>Goal (Days)</p>
                     </div>
                     <div className='bg-white text-center rounded-lg px-4 py-8 space-y-2 shadow-lg'>
-                        <h3 className='text-2xl md:text-3xl font-bold'>50</h3>
-                        <p className='text-[#64748B]'>Days Since Contact</p>
+                        <h3 className='text-2xl font-bold'>{next_due_date}</h3>
+                        <p className='text-[#64748B]'>Next Due</p>
                     </div>
                 </div>
 
                 <div className='space-y-4 p-6 rounded-lg shadow-lg bg-white'>
-                    <div className='flex justify-between'>
-                        <h3>Relationship Goal</h3>
+                    <div className='flex justify-between items-center'>
+                        <h3 className='text-xl font-bold text-[#244D3F]'>Relationship Goal</h3>
                         <button className='btn'>Edit</button>
                     </div>
-                    <p>Connect every 30 days</p>
+                    <p className='text-[#64748B]'>
+                        Connect every
+                        <span className='font-bold text text-[#1F2937]'> {goal} days</span>
+                    </p>
                 </div>
 
                 <div className='space-y-4 p-6 rounded-lg shadow-lg bg-white'>
 
-                    <h3>Quick Check-In</h3>
+                    <h3 className='text-xl font-bold text-[#244D3F]'>Quick Check-In</h3>
 
                     <div className='grid grid-cols-3 gap-6'>
-                        <div className='bg-[#F8FAFC] text-center rounded-lg px-4 py-8 space-y-2 border border-gray-200'>
-                            <span>call icon</span>
+                        <button 
+                        onClick={()=>{handleCheckInBtn(expectedFriend, "Call")}}
+                        className='btn h-auto rounded-lg flex-col py-4'>
+                            <span><LuPhoneCall  className='text-2xl'/></span>
                             <p className='text-[#64748B]'>Call</p>
-                        </div>
-                        <div className='bg-[#F8FAFC] text-center rounded-lg px-4 py-8 space-y-2 border border-gray-200'>
-                            <span>call icon</span>
-                            <p className='text-[#64748B]'>Call</p>
-                        </div>
-                        <div className='bg-[#F8FAFC] text-center rounded-lg px-4 py-8 space-y-2 border border-gray-200'>
-                            <span>call icon</span>
-                            <p className='text-[#64748B]'>Call</p>
-                        </div>
+                        </button>
+                        <button 
+                        onClick={()=>{handleCheckInBtn(expectedFriend, "Text")}}
+                        className='btn h-auto rounded-lg flex-col py-4'>
+                            <span><MdOutlineMessage  className='text-2xl'/></span>
+                            <p className='text-[#64748B]'>Text</p>
+                        </button>
+                        <button 
+                        onClick={()=>{handleCheckInBtn(expectedFriend, "Vedio")}}
+                        className='btn h-auto rounded-lg flex-col py-4 '>
+                            <span><IoVideocamOutline  className='text-3xl'/></span>
+                            <p className='text-[#64748B]'>Vedio</p>
+                        </button>
                     </div>
                 </div>
             </div>
