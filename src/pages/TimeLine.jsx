@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { TimeLineContext } from '../context/TimeLineDataProvider';
 import InteractionsCard from '../ui/InteractionsCard';
+import NoDataFoundCard from '../ui/NoDataFoundCard';
 
 const TimeLine = () => {
 
     const { timeLineAllData } = useContext(TimeLineContext);
+    console.log(timeLineAllData)
     const [active, setActive] = useState('all');
     const filteredByCall = timeLineAllData.filter(data => data.connectionType === 'Call');
     const filteredByText = timeLineAllData.filter(data => data.connectionType === 'Text');
@@ -32,14 +34,20 @@ const TimeLine = () => {
                         className={`btn mr-2 shadow-none ${active === 'vedio' ? "bg-[#244D3F] text-white" : ""}`}>Vedio</button>
                 </div>
 
-                <div className="dropdown dropdown-start">
+                <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn m-1">Click ⬇️</div>
                     <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                        <li><a>Item 1</a></li>
-                        <li><a>Item 2</a></li>
+                        <li><a>Newest first</a></li>
+                        <li><a>Oldest frist</a></li>
                     </ul>
                 </div>
             </div>
+
+            {
+                timeLineAllData.length === 0 ?
+                    <NoDataFoundCard></NoDataFoundCard>
+                    : ""
+            }
 
             <div>
                 {

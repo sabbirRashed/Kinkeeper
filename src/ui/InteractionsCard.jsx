@@ -4,6 +4,7 @@ import { LuPhoneCall } from 'react-icons/lu';
 import { MdOutlineMessage } from 'react-icons/md';
 
 const InteractionsCard = ({ data }) => {
+
     return (
         <div className='border border-gray-200 bg-white rounded-lg p-4 mt-6 flex items-center gap-6'>
             <div className='bg-gray-200 p-5 rounded-lg'>
@@ -14,7 +15,7 @@ const InteractionsCard = ({ data }) => {
                         <MdOutlineMessage className='text-2xl' />
                     ) : data.connectionType === "Vedio" ? (
                         <IoVideocamOutline className='text-3xl' />
-                    ) : null
+                    ) : ""
                 }
             </div>
             <div>
