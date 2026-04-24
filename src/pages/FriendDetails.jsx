@@ -38,8 +38,8 @@ const FriendDetails = () => {
 
 
     return (
-        <div className=' w-11/12 max-w-325 mx-auto mt-20  grid grid-cols-1 md:grid-cols-3 gap-6'>
-            <div className=''>
+        <div className=' w-11/12 max-w-325 mx-auto mt-20  grid grid-cols-1 md:grid-cols-3 md:gap-x-6 gap-y-10 md:gap-y-0'>
+            <div>
                 <div
                     className='text-cente space-y-3 p-6 shadow-lg rounded-lg bg-white text-center overflow-hidden'>
                     <div>
@@ -84,18 +84,18 @@ const FriendDetails = () => {
             </div>
 
             <div className=' min-h-50 col-span-2 space-y-6'>
-                <div className='grid grid-cols-3 gap-6'>
+                <div className='grid grid-cols-3 gap-2 md:gap-6'>
                     <div className='bg-white text-center rounded-lg px-4 py-8 space-y-2 shadow-lg'>
-                        <h3 className='text-2xl font-bold'>{days_since_contact}</h3>
-                        <p className='text-[#64748B]'>Days Since Contact</p>
+                        <h3 className='text-xl md:text-2xl font-bold'>{days_since_contact}</h3>
+                        <p className='text-sm md:text-base text-[#64748B]'>Days Since Contact</p>
                     </div>
                     <div className='bg-white text-center rounded-lg px-4 py-8 space-y-2 shadow-lg'>
-                        <h3 className='text-2xl font-bold'>{goalInDays}</h3>
-                        <p className='text-[#64748B]'>Goal (Days)</p>
+                        <h3 className='text-xl md:text-2xl font-bold'>{goalInDays}</h3>
+                        <p className='text-sm md:text-base text-[#64748B]'>Goal (Days)</p>
                     </div>
                     <div className='bg-white text-center rounded-lg px-4 py-8 space-y-2 shadow-lg'>
-                        <h3 className='text-2xl font-bold'>{next_due_date}</h3>
-                        <p className='text-[#64748B]'>Next Due</p>
+                        <h3 className='text-xl md:text-2xl font-bold'>{next_due_date}</h3>
+                        <p className='text-sm md:text-base text-[#64748B]'>Next Due</p>
                     </div>
                 </div>
 
@@ -126,7 +126,7 @@ const FriendDetails = () => {
 
                     <h3 className='text-xl font-bold text-[#244D3F]'>Quick Check-In</h3>
 
-                    <div className='grid grid-cols-3 gap-6'>
+                    <div className='grid grid-cols-3 gap-2 md:gap-6'>
                         <button
                             onClick={() => { handleCheckInBtn(expectedFriend, "Call") }}
                             className='btn h-auto rounded-lg flex-col py-4'>

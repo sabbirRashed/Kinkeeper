@@ -15,12 +15,12 @@ const GoalEditForm = ({ expectedFriend, setGoalInDays }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className=''>
             <input
                 type="number"
                 name="number"
                 placeholder='15'
-                className='bg-white p-2 border border-gray-200 rounded-sm' />
+                className='bg-white p-2 border border-gray-200 rounded-sm w-full sm:w-50  mb-2' />
             <input
                 type="submit"
                 value="Save"

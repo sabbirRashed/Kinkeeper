@@ -19,28 +19,28 @@ const TimeLine = () => {
             <h2 className='text-2xl md:text-4xl lg:text-5xl font-bold'>Timeline</h2>
 
             <div className='p-6 border border-gray-200 bg-white flex justify-between rounded-lg mt-10'>
-                <div>
+                <div className='flex flex-wrap gap-2'>
                     <button
                         onClick={() => setActive('all')}
-                        className={`btn mr-2 shadow-none ${active === 'all' ? "bg-[#244D3F] text-white" : ""}`}>All</button>
+                        className={`btn shadow-none ${active === 'all' ? "bg-[#244D3F] text-white" : ""}`}>All</button>
                     <button
                         onClick={() => setActive('call')}
-                        className={`btn mr-2 shadow-none ${active === 'call' ? "bg-[#244D3F] text-white" : ""}`}>Call</button>
+                        className={`btn shadow-none ${active === 'call' ? "bg-[#244D3F] text-white" : ""}`}>Call</button>
                     <button
                         onClick={() => setActive('text')}
-                        className={`btn mr-2 shadow-none ${active === 'text' ? "bg-[#244D3F] text-white" : ""}`}>Text</button>
+                        className={`btn shadow-none ${active === 'text' ? "bg-[#244D3F] text-white" : ""}`}>Text</button>
                     <button
                         onClick={() => setActive('vedio')}
-                        className={`btn mr-2 shadow-none ${active === 'vedio' ? "bg-[#244D3F] text-white" : ""}`}>Vedio</button>
+                        className={`btn shadow-none ${active === 'vedio' ? "bg-[#244D3F] text-white" : ""}`}>Vedio</button>
                 </div>
-
+{/* 
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn m-1">Click ⬇️</div>
                     <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                         <li><a>Newest first</a></li>
                         <li><a>Oldest frist</a></li>
                     </ul>
-                </div>
+                </div> */}
             </div>
 
             {
